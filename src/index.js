@@ -1,4 +1,4 @@
-import './babel'
+// import './babel'
 import './styles/styles.css'
 import './styles/style.sass'
 

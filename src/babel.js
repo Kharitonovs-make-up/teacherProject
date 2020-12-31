@@ -8,5 +8,6 @@ start().then(console.log)
 class Util {
 	static id = Date.now()
 }
+const unused = ''
 
 console.log(Util.id)

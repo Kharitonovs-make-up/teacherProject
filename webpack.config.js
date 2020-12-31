@@ -31,7 +31,7 @@ const cssLoaders = (extra) => {
 			options: {
 				publicPath:  path.resolve(__dirname, 'dist')
 			}
-		}, 'css-loader'
+		}, 'css-loader?url=false'
 	]
 	if(extra){
 		loaders.push(extra)
@@ -39,28 +39,32 @@ const cssLoaders = (extra) => {
 	return loaders
 }
 
-const babelOptions = (preset) => {
-	const opts = {
-		presets: [
-			'@babel/preset-env'
-		],
-		plugins: [
-			'@babel/plugin-proposal-class-properties'
-		]
-	}
-	if(preset){
-		opts.presets.push(preset);
-	}
-	return opts;
-}
-
 const filename = ext => isDev ? `${ext==='css' ? 'style': `[name]`}.[hash].${ext}` : `[name].[hash].${ext}`
+
+const jsLoaders = () => {
+	const loaders = [{
+		loader: 'babel-loader',
+		options: {
+			presets: ['@babel/preset-env'],
+			plugins: [
+				'@babel/plugin-proposal-class-properties'
+			]
+		}
+	}]
+	if(isDev){
+		loaders.push({
+			loader: 'eslint-loader'
+		})
+	}
+	return loaders
+}
 
 module.exports = {
 	context: path.resolve(__dirname, 'src'),
 	mode: 'development',
 	entry: {
-		main: ['@babel/polyfill','./index.js']
+		//'@babel/polyfill',
+		main: './index.js'
 	},
 	output: {
 		filename: filename('js'),
@@ -73,6 +77,7 @@ module.exports = {
 		}
 	},
 	optimization: optimization(),
+	devtool: isDev ? 'source-map' : '',
 
 	devServer: {
 		contentBase: './dist',
@@ -92,7 +97,15 @@ module.exports = {
 						{
 							from: path.resolve(__dirname, 'src/assets/favicon'),
 							to: path.resolve(__dirname, 'dist/assets/favicon')
-						}
+						},
+						{
+							from: path.resolve(__dirname, 'src/assets/images'),
+							to: path.resolve(__dirname, 'dist/assets/images')
+						},
+						// {
+						// 	from: path.resolve(__dirname, 'src/port.html'),
+						// 	to: path.resolve(__dirname, 'dist')
+						// }
 					]
 			}),
 			new MiniCssExtractPlugin({
@@ -127,19 +140,23 @@ module.exports = {
 						},
 					}]
 			},
-			{
-				test: /\.js$/,
-				exclude: '/node_modules/',
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['@babel/preset-env'],
-						plugins: [
-							'@babel/plugin-proposal-class-properties'
-						]
-					},
-				}
-			}
+			// {
+			// 	test: /\.js$/,
+			// 	exclude: '/node_modules/',
+			// 	use: [{
+			// 		loader: 'babel-loader',
+			// 		options: {
+			// 			presets: ['@babel/preset-env'],
+			// 			plugins: [
+			// 				'@babel/plugin-proposal-class-properties'
+			// 			]
+			// 		}
+			// 	},
+			// 	{
+			// 		loader: "eslint-loader"
+			// 	}
+			// 	]
+			// }
 		]
 	}
 }

@@ -1,6 +1,100 @@
-$lightRed: #d7bde2
+$textBlue: #2c54e2
 
-.card
-	padding: 10px
+.container
+	width: 1140px
+	margin: auto
+	padding: 0 20px
+
+.header
+	font-size: 18px
+	padding-top: 60px
+	padding-bottom: 20px
+	font-family: 'Roboto', sans-serif
+	margin: 0 auto
 	text-align: center
-	color: $lightRed
+	background: linear-gradient(45deg, #30cfd0, #330867)
+	color: white
+	&-title
+		font-size: 1.5em
+	&-info
+		font-size: 1em
+		margin: 2em 0
+	&-img
+		margin: 2em 0
+		img
+			width: 70%
+
+.footer
+	max-width: 60%
+	display: flex
+	padding: 20px 0
+	color: $textBlue
+	&-wrapper
+		margin-top: 20px
+	&-info
+		margin: 2em 0
+		padding: 1em
+		width: 49%
+		&__subtitle
+			margin-bottom: 15px
+	&-img
+		width: 49%
+		text-align: left
+		&__img
+			max-width: 90%
+			max-height: 90%
+
+.menu
+	font-size: 0.9em
+	margin-top: 1em
+	&-list
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+		list-style: none
+		&__active
+			text-decoration: underline
+		&__caption
+			width: calc(13% - 22px)
+			margin: 10px 2px
+			list-style: none
+			font-weight: bold
+			color: white
+			padding: 10px
+			border-radius: 20%
+			box-shadow: 0 0 7px 5px rgb(0, 0, 0 , 0.2)
+			background-color: #0b1510
+			overflow: hidden
+			display: flex
+			align-items: center
+			justify-content: center
+			flex-grow: 1
+			text-align: center
+			&:hover
+				z-index: 1
+				transform: scale(1.1)
+				cursor: pointer
+				box-shadow: 0 0 8px 6px white
+
+.main
+	margin-top: 20px
+	margin-bottom: 20px
+	text-align: center
+	font-size: 14px
+
+.content
+	font-size: 18px
+	font-family: 'Roboto', sans-serif
+	margin: 0 auto
+	text-align: center
+	background: linear-gradient(45deg, #30cfd0, #330867)
+	color: white
+	&-title
+		font-size: 1em
+	&-block
+		display: flex
+		text-align: center
+		&__img
+			width: 49%
+		&__info
+			width: 49%
