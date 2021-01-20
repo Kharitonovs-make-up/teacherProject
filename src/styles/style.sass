@@ -1,4 +1,5 @@
 $textBlue: #2c54e2
+$textColor: white
 
 .container
 	width: 1140px
@@ -13,7 +14,7 @@ $textBlue: #2c54e2
 	margin: 0 auto
 	text-align: center
 	background: linear-gradient(45deg, #30cfd0, #330867)
-	color: white
+	color: $textColor
 	&-title
 		font-size: 1.5em
 	&-info
@@ -59,7 +60,7 @@ $textBlue: #2c54e2
 			margin: 10px 2px
 			list-style: none
 			font-weight: bold
-			color: white
+			color: $textColor
 			padding: 10px
 			border-radius: 20%
 			box-shadow: 0 0 7px 5px rgb(0, 0, 0 , 0.2)
@@ -74,7 +75,7 @@ $textBlue: #2c54e2
 				z-index: 1
 				transform: scale(1.1)
 				cursor: pointer
-				box-shadow: 0 0 8px 6px white
+				box-shadow: 0 0 8px 6px $textColor
 
 .main
 	margin-top: 20px
@@ -88,13 +89,122 @@ $textBlue: #2c54e2
 	margin: 0 auto
 	text-align: center
 	background: linear-gradient(45deg, #30cfd0, #330867)
-	color: white
+	color: $textColor
+	padding-top: 3em
+	padding-bottom: 3em
 	&-title
-		font-size: 1em
+		font-size: 1.5em
+		position: relative
+		overflow: hidden
+		text-decoration: underline
 	&-block
 		display: flex
 		text-align: center
 		&__img
 			width: 49%
 		&__info
+			text-align: left
+			font-size: 1em
 			width: 49%
+			line-height: 1.5
+
+.guideline
+	display: flex
+	padding: 1em
+	&-block
+		width: 60%
+		text-align: left
+		padding: 1em
+		&__book
+			font-size: 1em
+			margin-bottom: 1em
+			a
+				text-decoration: none
+				color: $textColor
+	&-img
+		&__props
+			width: 60%
+			height: 100%
+
+.text
+	color: #f2f2f2
+	font-size: 12px
+	padding: 8px 12px
+	position: absolute
+	top: 0
+
+.portfolio
+	font-size: 18px
+	padding-top: 60px
+	padding-bottom: 20px
+	font-family: 'Roboto', sans-serif
+	margin: 0 auto
+	text-align: center
+	background: linear-gradient(45deg, #30cfd0, #330867)
+	color: $textColor
+	&-block
+		margin-top: 2em
+		&-subtitle
+			color: gold
+		&__img
+			margin: 2em
+			&-descr
+				font-size: 1em
+				margin-bottom: 1em
+		&__year
+			margin-top: 1em
+			margin-bottom: 1em
+			display: flex
+			overflow: hidden
+			flex-wrap: wrap
+			justify-content: center
+			position: relative
+			&::after
+				content: ''
+				position: absolute
+				height: 3px
+				width: 100%
+				background-color: gold
+				bottom: 0
+
+.certification
+	font-size: 18px
+	padding-top: 60px
+	padding-bottom: 20px
+	font-family: 'Roboto', sans-serif
+	margin: 0 auto
+	text-align: center
+	background: linear-gradient(45deg, #30cfd0, #330867)
+	color: $textColor
+	&-block
+		display: flex
+		margin-top: 1em
+		margin-bottom: 1em
+		&__img
+			width: 25%
+			img
+				min-width: 60%
+		&__descr
+			text-align: left
+			width: 75%
+
+.pupil
+	font-size: 18px
+	padding-top: 60px
+	padding-bottom: 20px
+	font-family: 'Roboto', sans-serif
+	margin: 0 auto
+	text-align: center
+	background: linear-gradient(45deg, #30cfd0, #330867)
+	color: $textColor
+	&-block
+		display: flex
+		margin-top: 1em
+		margin-bottom: 1em
+		&__img
+			width: 25%
+			img
+				min-width: 60%
+		&__descr
+			text-align: left
+			width: 75%

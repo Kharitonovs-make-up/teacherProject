@@ -64,7 +64,7 @@ module.exports = {
 	mode: 'development',
 	entry: {
 		//'@babel/polyfill',
-		main: './index.js'
+		main: ['@babel/polyfill','./index.js']
 	},
 	output: {
 		filename: filename('js'),
@@ -77,7 +77,7 @@ module.exports = {
 		}
 	},
 	optimization: optimization(),
-	devtool: isDev ? 'source-map' : '',
+	devtool: isDev ? 'source-map' : false,
 
 	devServer: {
 		contentBase: './dist',
@@ -102,10 +102,10 @@ module.exports = {
 							from: path.resolve(__dirname, 'src/assets/images'),
 							to: path.resolve(__dirname, 'dist/assets/images')
 						},
-						// {
-						// 	from: path.resolve(__dirname, 'src/port.html'),
-						// 	to: path.resolve(__dirname, 'dist')
-						// }
+						{
+							from: path.resolve(__dirname, 'src/assets/fonts'),
+							to: path.resolve(__dirname, 'dist/assets/fonts')
+						}
 					]
 			}),
 			new MiniCssExtractPlugin({
@@ -140,23 +140,23 @@ module.exports = {
 						},
 					}]
 			},
-			// {
-			// 	test: /\.js$/,
-			// 	exclude: '/node_modules/',
-			// 	use: [{
-			// 		loader: 'babel-loader',
-			// 		options: {
-			// 			presets: ['@babel/preset-env'],
-			// 			plugins: [
-			// 				'@babel/plugin-proposal-class-properties'
-			// 			]
-			// 		}
-			// 	},
-			// 	{
-			// 		loader: "eslint-loader"
-			// 	}
-			// 	]
-			// }
+			{
+				test: /\.js$/,
+				exclude: '/node_modules/',
+				use: [{
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env'],
+						plugins: [
+							'@babel/plugin-proposal-class-properties'
+						]
+					}
+				},
+				{
+					loader: "eslint-loader"
+				}
+				]
+			}
 		]
 	}
 }
